@@ -13,13 +13,18 @@ const Ingredient = database.define("ingredient", {
         allowNull: false,
     },
 
-    value: {
-        type: DataTypes.DECIMAL,
+    quantity: {
+        type: DataTypes.STRING,
         allowNull: false
     },
 
-    quantity: {
+    unitMeasure: {
         type: DataTypes.STRING,
+        allowNull: false
+    },
+
+    value: {
+        type: DataTypes.DECIMAL,
         allowNull: false
     },
 
