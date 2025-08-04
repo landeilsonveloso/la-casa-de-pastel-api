@@ -52,7 +52,7 @@ export const forgotPassword = async (email) => {
             throw new Error("Usuário não cadastrado!")
         }
         
-        const link = `https://la-casa-de-pastel-api.vercel.app/redefinepassword`
+        const link = `https://la-casa-de-pastel-app.vercel.app/redefinepassword`
 
         const transport = createTransport({
             host: "smtp.gmail.com",
