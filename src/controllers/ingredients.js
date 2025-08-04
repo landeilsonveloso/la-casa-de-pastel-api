@@ -1,6 +1,6 @@
 import Ingredient from "../models/ingredients.js"
 
-export const create = async (description, value, quantity, userId) => {
+export const create = async (description, quantity, unitMeasure, value, userId) => {
     try {
         const ingredient = await Ingredient.findOne({where: {description, userId}})
     
@@ -8,7 +8,7 @@ export const create = async (description, value, quantity, userId) => {
             throw new Error("Ingrediente já cadastrado!")
         }
 
-        await Ingredient.create({description, value, quantity, userId})
+        await Ingredient.create({description, quantity, unitMeasure, value, userId})
     }
     
     catch (err) {
@@ -26,7 +26,7 @@ export const findAll = async (userId) => {
     }
 }
 
-export const update = async (id, description, value, quantity, userId) => {
+export const update = async (id, description, quantity, unitMeasure, value, userId) => {
     try {
         const ingredient = await Ingredient.findOne({where: {description, userId}})
 
@@ -34,7 +34,7 @@ export const update = async (id, description, value, quantity, userId) => {
             throw new Error("Ingrediente já cadastrado!")
         }
 
-        await Ingredient.update({description, value, quantity}, {where: {id}})
+        await Ingredient.update({description, quantity, unitMeasure, value}, {where: {id}})
     }
     
     catch (err) {
