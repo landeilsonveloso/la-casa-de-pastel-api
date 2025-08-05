@@ -115,20 +115,20 @@ userRouter.put("/redefinepassword", verifyToken, async (req, res) => {
             return res.status(400).send("Campo nova senha obrigatório!")
         }
 
-        else if (password.length < 6 || password.length > 18) {
-            return res.status(400).send("Campo nova senha deve conter entre 6 e 18 caracteres!")
-        }
-        
         else if (!confirmPassword) {
             return res.status(400).send("Campo confirmar nova senha obrigatório!")
         }
 
-        else if (confirmPassword.length < 6 || confirmPassword.length > 18) {
-            return res.status(400).send("Campo confirmar nova senha deve conter entre 6 e 18 caracteres!")
-        }
-        
         else if (password != confirmPassword) {
             return res.status(400).send("Campos nova senha e confirmar nova senha distintos!")
+        }
+
+        else if (password.length < 6 || password.length > 18) {
+            return res.status(400).send("Campo nova senha deve conter entre 6 e 18 caracteres!")
+        }
+
+        else if (confirmPassword.length < 6 || confirmPassword.length > 18) {
+            return res.status(400).send("Campo confirmar nova senha deve conter entre 6 e 18 caracteres!")
         }
 
         await redefinePassword(id, password)
