@@ -14,7 +14,7 @@ const verifyToken = async (req, res, next) => {
 
         req.userId = decode.userId
 
-        return next()
+        next()
     })
 }
 
