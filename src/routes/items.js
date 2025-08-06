@@ -1,10 +1,10 @@
-import { create, destroy, findAll, update } from "../controllers/ingredients.js"
+import { create, destroy, findAll, update } from "../controllers/items.js"
 import { Router } from "express"
 import verifyToken from "../middlewares/auth.js"
 
-const ingredientRouter = Router()
+const itemRouter = Router()
 
-ingredientRouter.post("/", verifyToken, async (req, res) => {
+itemRouter.post("/", verifyToken, async (req, res) => {
     try {
         const userId = req.userId
         const {description, quantity, unitMeasure, value} = req.body
@@ -31,7 +31,7 @@ ingredientRouter.post("/", verifyToken, async (req, res) => {
 
         await create(description, quantity, unitMeasure, value, userId)
         
-        res.status(201).send("Ingrediente cadastrado com sucesso!")
+        res.status(201).send("Item cadastrado com sucesso!")
     }
     
     catch (err) {
@@ -39,13 +39,13 @@ ingredientRouter.post("/", verifyToken, async (req, res) => {
     }
 })
 
-ingredientRouter.get("/", verifyToken, async (req, res) => {
+itemRouter.get("/", verifyToken, async (req, res) => {
     try {
         const userId = req.userId
 
-        const ingredients = await findAll(userId)
+        const items = await findAll(userId)
 
-        res.status(200).send(ingredients)
+        res.status(200).send(items)
     }
     
     catch (err) {
@@ -53,7 +53,7 @@ ingredientRouter.get("/", verifyToken, async (req, res) => {
     }
 })
 
-ingredientRouter.put("/:id", verifyToken, async (req, res) => {
+itemRouter.put("/:id", verifyToken, async (req, res) => {
     try {
         const id = req.params.id
         const userId = req.userId
@@ -81,7 +81,7 @@ ingredientRouter.put("/:id", verifyToken, async (req, res) => {
 
         await update(id, description, quantity, unitMeasure, value, userId)
 
-        res.status(200).send("Ingrediente atualizado com sucesso!")
+        res.status(200).send("Item atualizado com sucesso!")
     }
     
     catch (err) {
@@ -89,13 +89,13 @@ ingredientRouter.put("/:id", verifyToken, async (req, res) => {
     }
 })
 
-ingredientRouter.delete("/:id", verifyToken, async (req, res) => {
+itemRouter.delete("/:id", verifyToken, async (req, res) => {
     try {
         const id = req.params.id
 
         await destroy(id)
 
-        res.status(200).send("Ingrediente excluido com sucesso!")
+        res.status(200).send("Item excluido com sucesso!")
     }
     
     catch (err) {
@@ -103,4 +103,4 @@ ingredientRouter.delete("/:id", verifyToken, async (req, res) => {
     }
 })
 
-export default ingredientRouter
+export default itemRouter
