@@ -1,8 +1,8 @@
 import Inflow from "../models/inflows.js"
 
-export const create = async (description, date, method, value, userId) => {
+export const create = async (description, date, firstMethod, firstValue, secondMethod, secondValue, thirdMethod, thirdValue, userId) => {
     try {
-        await Inflow.create({description, date, method, value, userId})
+        await Inflow.create({description, date, firstMethod, firstValue, secondMethod, secondValue, thirdMethod, thirdValue, userId})
     }
     
     catch (err) {
@@ -20,9 +20,9 @@ export const findAll = async (userId) => {
     }
 }
 
-export const update = async (id, description, date, method, value) => {
+export const update = async (id, description, date, firstMethod, firstValue, secondMethod, secondValue, thirdMethod, thirdValue) => {
     try {
-        await Inflow.update({description, date, method, value}, {where: {id}})
+        await Inflow.update({description, date, firstMethod, firstValue, secondMethod, secondValue, thirdMethod, thirdValue}, {where: {id}})
     }
     
     catch (err) {

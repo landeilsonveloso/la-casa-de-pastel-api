@@ -18,14 +18,30 @@ const Inflow = database.define("inflow", {
         allowNull: false,
     },
 
-    method: {
+    firstMethod: {
         type: DataTypes.STRING,
         allowNull: false
     },
 
-    value: {
+    firstValue: {
         type: DataTypes.DECIMAL,
         allowNull: false
+    },
+
+    secondMethod: {
+        type: DataTypes.STRING
+    },
+
+    secondValue: {
+        type: DataTypes.DECIMAL
+    },
+
+    thirdMethod: {
+        type: DataTypes.STRING
+    },
+
+    thirdValue: {
+        type: DataTypes.DECIMAL
     },
 
     userId: {

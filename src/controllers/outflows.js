@@ -1,8 +1,8 @@
 import Outflow from "../models/outflows.js"
 
-export const create = async (description, date, method, value, userId) => {
+export const create = async (description, date, firstMethod, firstValue, secondMethod, secondValue, thirdMethod, thirdValue, userId) => {
     try {
-        await Outflow.create({description, date, method, value, userId})
+        await Outflow.create({description, date, firstMethod, firstValue, secondMethod, secondValue, thirdMethod, thirdValue, userId})
     }
     
     catch (err) {
@@ -20,9 +20,9 @@ export const findAll = async (userId) => {
     }
 }
 
-export const update = async (id, description, date, method, value) => {
+export const update = async (id, description, date, firstMethod, firstValue, secondMethod, secondValue, thirdMethod, thirdValue) => {
     try {
-        await Outflow.update({description, date, method, value}, {where: {id}})
+        await Outflow.update({description, date, firstMethod, firstValue, secondMethod, secondValue, thirdMethod, thirdValue}, {where: {id}})
     }
     
     catch (err) {
