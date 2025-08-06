@@ -22,11 +22,11 @@ inflowRouter.post("/", verifyToken, async (req, res) => {
         }
 
         else if (!firstMethod) {
-            return res.status(400).send("Campo método 1 obrigatório!")
+            return res.status(400).send("Campo 1º método obrigatório!")
         }
 
         else if (!firstValue) {
-            return res.status(400).send("Campo valor 1 obrigatório!")
+            return res.status(400).send("Campo 1º valor obrigatório!")
         }
         
         await create(description, date, firstMethod, firstValue, secondMethod, secondValue, thirdMethod, thirdValue, userId)
@@ -71,11 +71,11 @@ inflowRouter.put("/:id", verifyToken, async (req, res) => {
         }
 
         else if (!firstMethod) {
-            return res.status(400).send("Campo método 1 obrigatório!")
+            return res.status(400).send("Campo 1º método obrigatório!")
         }
 
         else if (!firstValue) {
-            return res.status(400).send("Campo valor 1 obrigatório!")
+            return res.status(400).send("Campo 1º valor obrigatório!")
         }
         
         await update(id, description, date, firstMethod, firstValue, secondMethod, secondValue, thirdMethod, thirdValue)

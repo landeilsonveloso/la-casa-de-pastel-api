@@ -7,7 +7,7 @@ const outflowRouter = Router()
 outflowRouter.post("/", verifyToken, async (req, res) => {
     try {
         const userId = req.userId
-        const {description, date, method, value} = req.body
+        const {description, date, firstMethod, firstValue, secondMethod, secondValue, thirdMethod, thirdValue} = req.body
 
         if (!description) {
             return res.status(400).send("Campo descrição obrigatório!")
@@ -21,15 +21,15 @@ outflowRouter.post("/", verifyToken, async (req, res) => {
             return res.status(400).send("Campo data obrigatório!")
         }
 
-        else if (!method) {
-            return res.status(400).send("Campo método obrigatório!")
+        else if (!firstMethod) {
+            return res.status(400).send("Campo 1º método obrigatório!")
         }
 
-        else if (!value) {
-            return res.status(400).send("Campo valor obrigatório!")
+        else if (!firstValue) {
+            return res.status(400).send("Campo 1º valor obrigatório!")
         }
         
-        await create(description, date, method, value, userId)
+        await create(description, date, firstMethod, firstValue, secondMethod, secondValue, thirdMethod, thirdValue, userId)
         
         res.status(201).send("Saída cadastrada com sucesso!")
     }
@@ -56,7 +56,7 @@ outflowRouter.get("/", verifyToken, async (req, res) => {
 outflowRouter.put("/:id", verifyToken, async (req, res) => {
     try {
         const id = req.params.id
-        const {description, date, method, value} = req.body
+        const {description, date, firstMethod, firstValue, secondMethod, secondValue, thirdMethod, thirdValue} = req.body
 
         if (!description) {
             return res.status(400).send("Campo descrição obrigatório!")
@@ -70,15 +70,15 @@ outflowRouter.put("/:id", verifyToken, async (req, res) => {
             return res.status(400).send("Campo data obrigatório!")
         }
 
-        else if (!method) {
-            return res.status(400).send("Campo método obrigatório!")
+        else if (!firstMethod) {
+            return res.status(400).send("Campo 1º método obrigatório!")
         }
 
-        else if (!value) {
-            return res.status(400).send("Campo valor obrigatório!")
+        else if (!firstValue) {
+            return res.status(400).send("Campo 1º valor obrigatório!")
         }
         
-        await update(id, description, date, method, value)
+        await update(id, description, date, firstMethod, firstValue, secondMethod, secondValue, thirdMethod, thirdValue)
         
         res.status(200).send("Saída atualizada com sucesso!")
     }
